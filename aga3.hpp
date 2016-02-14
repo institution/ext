@@ -2194,37 +2194,37 @@ Mv1<C> rotated(Mv1<A> const& x, Mv02<B> const& y) {
 // ostream
 template <class R>
 std::ostream& operator<<(std::ostream& t, Mv0<R> const& x) {
-    t << "mv0(" << x[0] << ")";
+    t << "(" << x[0] << ")";
     return t;
 }
 
 template <class R>
 std::ostream& operator<<(std::ostream& t, Mv1<R> const& x) {
-    t << "mv1(" << x[0] << "," << x[1] << "," << x[2] << ")";
+    t << "(" << x[0] << "," << x[1] << "," << x[2] << ")";
     return t;
 }
 
 template <class R>
 std::ostream& operator<<(std::ostream& t, Mv2<R> const& x) {
-    t << "mv2(" << x[0] << "," << x[1] << "," << x[2] << ")";
+    t << "(" << x[0] << "," << x[1] << "," << x[2] << ")";
     return t;
 }
 
 template <class R>
 std::ostream& operator<<(std::ostream& t, Mv02<R> const& x) {
-    t << "mv02(" << x[0] << "," << x[1] << "," << x[2] << "," << x[3] << ")";
+    t << "(" << x[0] << "," << x[1] << "," << x[2] << "," << x[3] << ")";
     return t;
 }
 
 template <class R>
 std::ostream& operator<<(std::ostream& t, Mv13<R> const& x) {
-    t << "mv13(" << x[0] << "," << x[1] << "," << x[2] << "," << x[3] << ")";
+    t << "(" << x[0] << "," << x[1] << "," << x[2] << "," << x[3] << ")";
     return t;
 }
 
 template <class R>
 std::ostream& operator<<(std::ostream& t, Mv3<R> const& x) {
-    t << "mv3(" << x[0] << ")";
+    t << "(" << x[0] << ")";
     return t;
 }
 
