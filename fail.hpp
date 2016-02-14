@@ -12,7 +12,7 @@ namespace ext{
 	void fail(char const* fmt, Args... args) {
 		print(std::cerr, fmt, args...);
 		assert(0);
-		//exit(-1);
+		//exit(-1); 
 	}
 	
 	
