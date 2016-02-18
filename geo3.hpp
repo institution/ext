@@ -17,7 +17,7 @@ namespace geo3 {
 	}
 
 	
-	float frac(float x) {
+	inline float frac(float x) {
 		return x - float(int(x));
 	}
 

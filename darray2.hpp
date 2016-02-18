@@ -25,6 +25,13 @@ namespace darray2 {
 		
 		v2<U> get_dim() const { return dim; }
 		
+		v2<U> get_pos(T const& t) const {
+			auto delta = &t - &p[0];
+			U y = delta / dim[0];
+			U x = delta % dim[0];			
+			return {x,y};
+		}
+		
 		size_t size() const { return p.size(); }
 		T & operator[](size_t i) { return p[i]; }
 		
