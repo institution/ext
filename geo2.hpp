@@ -60,6 +60,11 @@ namespace geo2 {
 	v2<T> vmul(v2<T> a, v2<T> b) {
 		return v2<T>(a[0]*b[0], a[1]*b[1]);
 	}
+
+	template <class T>
+	v2<T> vdiv(v2<T> a, v2<T> b) {
+		return v2<T>(a[0]/b[0], a[1]/b[1]);
+	}
 	
 	template <class T>
 	v2<T> calc_align(b2<T> par, v2<T> dim, v2<float> align = v2<float>(0.5, 0.5)) {
