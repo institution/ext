@@ -55,6 +55,11 @@ namespace geo2 {
 
 	};
 
+	template <class T>
+	b2<T> operator*(b2<T> const& b, T s) {
+		return b2<T>(b.pos * s, b.dim * s);
+	}
+
 
 	template <class T>
 	v2<T> vmul(v2<T> a, v2<T> b) {
@@ -70,7 +75,17 @@ namespace geo2 {
 	v2<T> calc_align(b2<T> par, v2<T> dim, v2<float> align = v2<float>(0.5, 0.5)) {
 		return v2<T>(v2<float>(par.pos) + vmul(v2<float>(par.dim - dim), align));
 	}
-	
+
+	template <class T>
+	bool overlap(b2<T> b, v2<T> pos) {
+		auto b_end = b.end();
+		return
+			b.pos[0] <= pos[0] and
+			b.pos[1] <= pos[1] and
+			pos[0] <= b_end[0] and
+			pos[1] <= b_end[1];
+	}
+
 	
 
 }

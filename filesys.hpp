@@ -5,6 +5,7 @@
 namespace filesys{
 
 	using Path = std::string;
+	
 
 	inline Path parent_path(Path const& p) {
 		auto i = p.rfind('/');
@@ -24,7 +25,7 @@ namespace filesys{
 		return p.size() > 0 and p[0] == '/';
 	}
 
-	inline Path operator/(Path const& a, Path const& b) {
+	inline Path _join(Path const& a, Path const& b) {
 		auto A = a.size();
 		auto B = b.size();
 		
@@ -44,7 +45,24 @@ namespace filesys{
 			return a + b.substr(1);
 		}
 		
-		return a + b;	
+		return a + b;
+	}
+
+
+	/*inline Path operator/(char const* a, char const* b) {
+		return _join(Path(a), Path(b));
+	}*/
+
+	inline Path operator/(char const* a, Path const& b) {
+		return _join(Path(a), b);
+	}
+
+	inline Path operator/(Path const& a, char const* b) {
+		return _join(a, Path(b));
+	}
+
+	inline Path operator/(Path const& a, Path const& b) {
+		return _join(a, b);
 	}
 	
 }
