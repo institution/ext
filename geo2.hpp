@@ -87,5 +87,17 @@ namespace geo2 {
 	}
 
 	
+	/*template <class T>
+	b2<T> intersect(b2<T> a, b2<T> b) {
+		b2<T> c;
+		
+		
+		auto b_end = b.end();
+		return
+			b.pos[0] <= pos[0] and
+			b.pos[1] <= pos[1] and
+			pos[0] <= b_end[0] and
+			pos[1] <= b_end[1];
+	}*/
 
 }
