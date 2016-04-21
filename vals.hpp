@@ -18,7 +18,7 @@ struct Vals{
 		}
 		
 		V & operator*() {
-			return *(*i).second;
+			return (*i).second;
 		}
 		
 		V const& operator*() const {
@@ -52,12 +52,12 @@ void for_each(Vals<T> & xs, F f) {
 }*/
 
 template <class T>
-auto vals(T & t) {
+auto list_values(T & t) {
 	return Vals<typename T::iterator>(t.begin(), t.end());
 }
 
 template <class T>
-auto vals(T const& t) {
+auto list_values(T const& t) {
 	return Vals<typename T::const_iterator>(t.begin(), t.end());
 }
 
