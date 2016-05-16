@@ -1,5 +1,5 @@
 #pragma once
-
+#include "format.hpp"
 #include "aga2.hpp"
 
 namespace geo2 {
@@ -82,10 +82,15 @@ namespace geo2 {
 		return
 			b.pos[0] <= pos[0] and
 			b.pos[1] <= pos[1] and
-			pos[0] <= b_end[0] and
-			pos[1] <= b_end[1];
+			pos[0] < b_end[0] and
+			pos[1] < b_end[1];
 	}
 
+	template <class T>
+	inline std::ostream & operator<<(std::ostream & o, b2<T> const& b) {
+		o << format("(%|| %||)", b.pos, b.dim);
+		return o;
+	}
 	
 	/*template <class T>
 	b2<T> intersect(b2<T> a, b2<T> b) {

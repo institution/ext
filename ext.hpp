@@ -9,6 +9,7 @@
 #include "random.hpp"
 #include "darray2.hpp"
 #include "fail.hpp"
+#include "bitop.hpp"
 
 namespace ext {
 	using namespace geo2;

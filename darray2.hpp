@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 #include "aga2.hpp"
 
 
@@ -17,9 +18,15 @@ namespace darray2 {
 
 		darray2() = default;
 		darray2(v2<U> dim) { resize(dim); }
+		darray2(v2<U> dim, T const& def) { resize(dim, def); }
 
 		void resize(v2<U> dim) {
 			p.resize(dim[0] * dim[1]);
+			this->dim = dim;
+		}
+		
+		void resize(v2<U> dim, T const& def) {
+			p.resize(dim[0] * dim[1], def);			
 			this->dim = dim;
 		}
 		
@@ -74,10 +81,10 @@ namespace darray2 {
 			});
 		}
 		
-		void resize(v2<U> dim, T const& f) {
+		/*void resize(v2<U> dim, T const& f) {
 			resize(dim);			
 			fill(f);
-		}
+		}*/
 		
 		T const& operator()(v2<U> pos) const { 
 			assert(0 <= pos[0]);
@@ -95,6 +102,20 @@ namespace darray2 {
 			return p.at(pos[0] + pos[1] * dim[0]); 
 		}
 	};
+	
+	
+	template <class T, class U>
+	std::ostream & operator<<(std::ostream & o, darray2<T,U> const& a) 
+	{		
+		for (U j = 0; j < a.dim[1]; ++j) {
+			for (U i = 0; i < a.dim[0]; ++i)
+			{
+				o << a({i,j}) << ' ';
+			}
+			o << "\n";
+		}
+		return o;
+	}
 
 
 

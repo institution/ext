@@ -14,11 +14,18 @@ namespace darray {
 
 		darray2() = default;
 		darray2(v2<U> dim) { resize(dim); }
+		darray2(v2<U> dim, T const& def) { resize(dim, def); }
 
 		void resize(v2<U> dim) {
 			p.resize(dim[0] * dim[1]);
 			this->dim = dim;
 		}
+		
+		void resize(v2<U> dim, T const& def) {
+			p.resize(dim[0] * dim[1], def);			
+			this->dim = dim;
+		}
+		
 		
 		v2<U> get_dim() const { return dim; }
 		
