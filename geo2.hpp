@@ -52,6 +52,11 @@ namespace geo2 {
 		v2<T> end() const {
 			return pos + dim;
 		}
+		
+		template <class U>
+		explicit b2(b2<U> other): b2(v2<T>(other.pos), v2<T>(other.dim)) {
+			
+		}
 
 	};
 
