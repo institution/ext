@@ -1,3 +1,5 @@
+#pragma once
+
 #include "aga3.hpp"
 
 namespace ext{
@@ -17,7 +19,7 @@ namespace geo3 {
 	}
 
 	
-	float frac(float x) {
+	inline float frac(float x) {
 		return x - float(int(x));
 	}
 
