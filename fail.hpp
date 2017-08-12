@@ -6,12 +6,18 @@
 
 namespace ext{
 
+	extern bool FAIL_THROWS;
 
 	template <class... Args>
 	[[noreturn]] 
 	void fail(char const* fmt, Args... args) {
 		print(std::cerr, fmt, args...);
-		assert(0);
+		if (FAIL_THROWS) {
+			throw std::exception();
+		}
+		else {
+			assert(0);
+		}
 		//exit(-1); 
 	}
 	
