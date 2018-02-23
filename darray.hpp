@@ -25,6 +25,7 @@ namespace darray {
 		darray1(U dim, T const& def) { resize(dim, def); }
 
 		size_t size() const { return p.size(); }
+		size_t byte_size() const { return p.size() * sizeof(T); }
 
 		void resize(U dim) { 
 			p.resize(dim); 
@@ -72,6 +73,8 @@ namespace darray {
 			assert(pos < get_dim());
 			return p.at(pos); 
 		}
+
+		void clear() { p.clear(); }
 	};
 	
 	
@@ -134,6 +137,7 @@ namespace darray {
 		auto end() const { return p.end(); }
 				
 		size_t size() const { return p.size(); }
+		size_t byte_size() const { return p.size() * sizeof(T); }
 		
 		T const& operator[](size_t i) const { return p[i]; }
 		T & operator[](size_t i) { return p[i]; }
@@ -162,6 +166,17 @@ namespace darray {
 			assert(pos[0] < dim[0]);
 			assert(pos[1] < dim[1]);
 			return p.at(pos[0] + pos[1] * dim[0]); 
+		}
+
+		void clear() {
+			dim[0] = v2<U>(0,0);
+			p.clear();
+		}
+
+		bool has(v2<U> pos) const {
+			return
+				0 <= pos[0] and pos[0] < dim[0] and
+				0 <= pos[1] and pos[1] < dim[1];
 		}
 	};
 	

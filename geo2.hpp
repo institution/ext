@@ -31,6 +31,49 @@ namespace geo2 {
 	}
 
 	template <class T>
+	struct aabb2 {
+		v2<T> pos;
+		v2<T> end;
+
+		aabb2() = default;
+
+		aabb2(v2<T> pos, v2<T> end):
+			pos(pos), end(end)
+		{}
+
+		aabb2(T x0, T y0, T x1, T y1):
+			pos(x0,y0), end(x1,y1)
+		{}
+
+		aabb2(aabb2 const& o):
+			pos(o.pos), end(o.end)
+		{}
+
+		v2<T> dim() const {
+			return end - pos;
+		}
+
+		void dim(v2<T> d) {
+			end = pos + d;
+		}
+
+		
+		template <class U>
+		explicit aabb2(aabb2<U> other): aabb2(v2<T>(other.pos), v2<T>(other.end)) {
+			
+		}
+		
+	};
+	
+
+	template <class T>
+	std::ostream & operator<<(std::ostream & o, aabb2<T> const& a)
+	{
+		print(o, "%|| %|| %|| %||", a.pos[0], a.pos[1], a.end[0], a.end[1]);
+		return o;
+	}
+
+	template <class T>
 	struct b2 {
 
 		v2<T> pos, dim;
@@ -45,12 +88,16 @@ namespace geo2 {
 			pos(x,y), dim(w,h)
 		{}
 
-		b2(b2 const& box):
-			pos(box.pos), dim(box.dim)
+		b2(b2 const& o):
+			pos(o.pos), dim(o.dim)
 		{}
 
 		v2<T> end() const {
 			return pos + dim;
+		}
+
+		void end(v2<T> e) const {
+			dim = e - pos;
 		}
 		
 		template <class U>
@@ -59,6 +106,8 @@ namespace geo2 {
 		}
 
 	};
+
+
 
 	template <class T>
 	b2<T> operator*(b2<T> const& b, T s) {
