@@ -165,6 +165,49 @@ namespace geo3 {
 			}
 		}		
 	}
+
+
+
+	
+	template <class T>
+	auto rotate_matrix4(aga3::Mv02<T> const& r) -> std::array<T, 16> {
+		// Convert rotor3 to glMatrix4.
+		// rotor -- multivector
+		// return -- opengl (loadable to matrix) list
+		// [dorst] chapter 7.10.4
+		
+		auto w = r[0];
+		auto z = r[1];
+		auto x = r[2];
+		auto y = r[3];
+
+		return std::array<T, 16>({
+			T(1.-2.*y*y-2.*z*z), T(2.*x*y-2.*w*z),	T(2.*x*z+2.*w*y),	T(0.),
+			T(2.*y*x+2.*w*z),	T(1.-2.*z*z-2.*x*x), T(2.*y*z-2.*w*x),	T(0.),
+			T(2.*z*x-2.*w*y),	T(2.*z*y+2.*w*x),	T(1.-2.*x*x-2.*y*y), T(0.),
+			T(0.),			   T(0.),			   T(0.),			   T(1.),
+		});
+	}
+
+	template <class T>
+	auto translate_matrix4(aga3::Mv1<T> const& r) -> std::array<T, 16> {
+		auto x = r[0];
+		auto y = r[1];
+		auto z = r[2];
+		
+		return std::array<T, 16>({
+			T(1), T(0), T(0), T(0),
+			T(0), T(1), T(0), T(0),
+			T(0), T(0), T(1), T(0),
+			T(x), T(y), T(z), T(1),
+		});
+	}
+
+
+
+
+
+
 	
 }
 }
