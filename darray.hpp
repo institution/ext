@@ -167,17 +167,6 @@ namespace darray {
 			}
 		}
 
-		bool has(v2<U> pos) const {
-			if (         0 <= pos[0]
-				and pos[0] <  dim[0]
-				and      0 <= pos[1]
-				and pos[1] <  dim[1]
-			) {
-				return true;
-			}
-			return false;
-		}
-
 		T const& operator()(v2<U> pos) const
 		{
 			return p.at(to_ind(pos));

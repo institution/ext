@@ -126,9 +126,28 @@ namespace geo2 {
 	}
 	
 	template <class T>
-	v2<T> calc_align(b2<T> par, v2<T> dim, v2<float> align = v2<float>(0.5, 0.5)) {
-		return v2<T>(v2<float>(par.pos) + vmul(v2<float>(par.dim - dim), align));
+	v2<T> vdiv0(v2<T> a, v2<T> b) {
+		return v2<T>(
+			((b[0] != T(0)) ? (a[0]/b[0]) : (T(0))),
+			((b[1] != T(0)) ? (a[1]/b[1]) : (T(0)))
+		);
 	}
+	
+	using v2s = v2<int16_t>;
+	using b2s = b2<int16_t>;
+	using v2f = v2<float>;
+	
+	inline v2s calc_align(
+		b2s box, v2s dim,
+		v2f const& align = v2f(0.5, 0.5)
+	) {
+		return box.pos + v2s(vmul(v2f(box.dim - dim), align));
+	}
+	
+	//template <class T>
+	//v2<T> calc_align(b2<T> par, v2<T> dim, v2<float> align = v2<float>(0.5, 0.5)) {
+	//	return v2<T>(v2<float>(par.pos) + vmul(v2<float>(par.dim - dim), align));
+	//}
 
 	template <class T>
 	bool overlap(b2<T> b, v2<T> pos) {
