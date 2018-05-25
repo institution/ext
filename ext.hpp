@@ -9,7 +9,7 @@
 #include "randm.hpp"
 #include "darray.hpp"
 #include "fail.hpp"
-#include "bitop.hpp"
+//#include "bitop.hpp"
 
 namespace ext {
 	using namespace geo2;
@@ -32,7 +32,7 @@ namespace ext {
 	}
 
 	template <class T>
-	inline float cmp(T x, T y) 
+	inline float cmp(T x, T y)
 	{
 		return (x > y)?(+1):(
 			(x < y)?(-1):(0)
@@ -40,7 +40,7 @@ namespace ext {
 	}
 
 	template <class T>
-	inline T abs(T x) 
+	inline T abs(T x)
 	{
 		return (x >= 0)?(x):(-x);
 	}

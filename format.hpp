@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 #include <boost/format.hpp>
+#include <iomanip> // setprecision
+#include <sstream> // stringstream
 
 
 
@@ -44,6 +46,13 @@ void print(std::ostream & o, Args ... args) {
 
 
 
+inline std::string to_string(float f, int n)
+{
+	std::stringstream stream;
+	stream << std::fixed << std::setprecision(n) << f;
+	std::string s = stream.str();
+	return s;
+}
 
 
 

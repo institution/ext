@@ -39,7 +39,7 @@ namespace darray {
 
 		U get_pos(T const& t) const
 		{
-			auto delta = &t - &p[0];
+			size_t delta = &t - &p[0];
 			assert(delta < size());
 			return U(delta);
 		}

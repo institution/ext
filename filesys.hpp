@@ -25,6 +25,7 @@ namespace filesys{
 		return p.size() > 0 and p[0] == '/';
 	}
 
+	
 	inline Path _join(Path const& a, Path const& b) {
 		auto A = a.size();
 		auto B = b.size();
@@ -46,6 +47,11 @@ namespace filesys{
 		}
 		
 		return a + b;
+	}
+
+	inline Path make_path(Path const& a, char const* b) 
+	{
+		return _join(a, Path(b));
 	}
 
 
